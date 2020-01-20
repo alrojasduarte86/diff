@@ -31,7 +31,7 @@ public class GitDiffComparator implements DiffComparator {
         RawText rightRawText = new RawText(right.getBytes(StandardCharsets.UTF_8));
         EditList edits = new EditList();
         edits.addAll(MyersDiff.INSTANCE.diff(RawTextComparator.DEFAULT, leftRawText, rightRawText));
-        List<Diff> diffs = edits.stream().map(edit -> gitEditToDiffMapper.apply(edit) ).collect(Collectors.toList());
+        List<Diff> diffs = edits.stream().map(gitEditToDiffMapper).collect(Collectors.toList());
         return diffs;
     }
 }
