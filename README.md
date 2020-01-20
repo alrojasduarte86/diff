@@ -2,7 +2,7 @@
 
 This application can be used to compare two pieces of text by calling the following http endpoints:
 
-* PUT /v1/diff/{id}/left: Is used to set the left piece of data to be compared. The body of the request should be a JSON Base64 code text.<br/>
+* PUT /v1/diff/{id}/left: Is used to set the left piece of data to be compared. The body of the request should be a JSON Base64 encoded text.<br/>
 
 Sample Request<br/>
 
@@ -18,7 +18,7 @@ Sample Response<br/>
 }
 ```
 
-* PUT /v1/diff/{id}/right:  Is used to set the right piece of data to be compared. The body of the request should be a JSON Base64 code text.<br/>
+* PUT /v1/diff/{id}/right:  Is used to set the right piece of data to be compared. The body of the request should be a JSON Base64 encoded text.<br/>
 
 Sample Request<br/>
 
