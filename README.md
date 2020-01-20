@@ -2,7 +2,7 @@
 
 This application can be used to compare two pieces of text by calling the following http endpoints:
 
-* PUT /v1/diff/{id}/left: Is used to set the left piece of data to be compared. The body of the request should be a JSON Base64 encoded text.<br/>
+* ```PUT /v1/diff/{id}/left``` Is used to set the left piece of data to be compared. The body of the request should be a JSON Base64 encoded text.<br/>
 
 *Sample Request*<br/>
 
@@ -19,7 +19,7 @@ curl -X PUT -H "Content-Type: application/json" -d 'W3siaWQiOiI2Nzg5MCJ9LAp7Imlk
 ```
 In this case ```lefData``` attribute of the response holds the decoded version of the body that was sent as part of the request
 
-* PUT /v1/diff/{id}/right:  Is used to set the right piece of data to be compared. The body of the request should be a JSON Base64 encoded text.<br/>
+* ```PUT /v1/diff/{id}/right```  Is used to set the right piece of data to be compared. The body of the request should be a JSON Base64 encoded text.<br/>
 
 *Sample Request*<br/>
 
@@ -36,7 +36,7 @@ curl -X PUT -H "Content-Type: application/json" -d 'W3siaWQiOiI2Nzg5MCJ9LAp7Imlk
 ```
 In this case ```rightData``` attribute of the response holds the decoded version of the body that was sent as part of the request
 
-* GET /v1/diff/{id}/: Is used to get the diffs between the left and right pieces of data that have {id} as their id
+* ```GET /v1/diff/{id}/``` Is used to get the diffs between the left and right pieces of data that have ```{id}``` as their id
 
 *Sample Request*<br/>
 
@@ -76,6 +76,11 @@ curl -X GET http://localhost:8080/v1/diff/12345/
     ]
 }
 ```
+
+The ```result``` attribute can have one of these values:
+- EQUALS: if the left and right pieces of data have the same value
+- EQUAL_SIZE: if the left and right pieces of data do not have the same value but the same size
+- NOT_EQUAL_SIZE: if the left and right pieces of data do not have the same value and size, in this case a list of ```diffs``` is returned. Each element of the list contains the start, end and length of where a difference on each piece of data is.
 
 ## Requirements
 
