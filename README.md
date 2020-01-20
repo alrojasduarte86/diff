@@ -1,5 +1,11 @@
 # diff
 
+This applicatio exposes three endpoints:
+
+* PUT /v1/diff/{id}/left:
+* PUT /v1/diff/{id}/right:
+* GET /v1/diff/{id}/:
+
 ## Requirements
 
 - Make sure the PC you will be running the application on has the JDK 1.8 installed
