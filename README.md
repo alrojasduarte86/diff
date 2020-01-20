@@ -11,8 +11,9 @@ plugin as the application uses this framework to remove boilerplate code. Furthe
 
 ## Running the Application
 
-To run the application open a command prompt, cd into the application root folder and type the following command:
-    ```mvnw spring-boot:run```
+To run the application open a command prompt, cd into the application root folder and type the following commands:
+    ```mvnw clean install package
+       mvnw spring-boot:run```
 
 The command will: compile the application, run the unit tests and start the application. After the command has finished
 the last line on the command prompt should look like:
