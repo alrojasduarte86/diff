@@ -17,4 +17,6 @@ plugin as the application uses this framework to remove boilerplate code. Furthe
 ## Running the Application Unit Tests
 
 To run the application unit tests open a command prompt, cd into the application root folder and type the following command:
+    ```
     mvnw test
+    ```
