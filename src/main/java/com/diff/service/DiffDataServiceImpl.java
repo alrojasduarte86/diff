@@ -1,8 +1,9 @@
-package com.waes.diff.service;
+package com.diff.service;
 
-import com.waes.diff.data.DiffEntry;
-import com.waes.diff.data.DiffSide;
-import com.waes.diff.repository.DiffEntryRepository;
+import com.diff.data.DiffSide;
+import com.diff.repository.DiffEntryRepository;
+import com.diff.data.DiffEntry;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,12 +19,18 @@ public class DiffDataServiceImpl implements DiffDataService {
     public DiffEntry save(String id, DiffSide side, String data) {
         DiffEntry diffEntry = getEntry(id);
         diffEntry.setId(id);
+        String cleanedData = StringUtils.trimToEmpty(data);
         if(side.equals(DiffSide.LEFT)){
-            diffEntry.setLeftData(data);
+            diffEntry.setLeftData(cleanedData);
         }else if(side.equals(DiffSide.RIGHT)){
-            diffEntry.setRightData(data);
+            diffEntry.setRightData(cleanedData);
         }
         return diffEntryRepository.save(diffEntry);
+    }
+
+    @Override
+    public Optional<DiffEntry> findBy(String id) {
+        return diffEntryRepository.findById(id);
     }
 
     private DiffEntry getEntry(String id) {

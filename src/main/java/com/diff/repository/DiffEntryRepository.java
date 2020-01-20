@@ -1,6 +1,6 @@
-package com.waes.diff.repository;
+package com.diff.repository;
 
-import com.waes.diff.data.DiffEntry;
+import com.diff.data.DiffEntry;
 import org.springframework.data.repository.CrudRepository;
 
 public interface DiffEntryRepository extends CrudRepository<DiffEntry, String> {

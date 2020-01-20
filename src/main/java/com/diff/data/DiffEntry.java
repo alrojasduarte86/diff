@@ -1,4 +1,4 @@
-package com.waes.diff.data;
+package com.diff.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

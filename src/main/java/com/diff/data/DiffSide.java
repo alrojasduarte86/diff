@@ -1,4 +1,4 @@
-package com.waes.diff.data;
+package com.diff.data;
 
 public enum DiffSide {
     LEFT,

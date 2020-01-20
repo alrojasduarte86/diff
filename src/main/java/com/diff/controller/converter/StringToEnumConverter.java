@@ -1,6 +1,6 @@
-package com.waes.diff.controller.converter;
+package com.diff.controller.converter;
 
-import com.waes.diff.data.DiffSide;
+import com.diff.data.DiffSide;
 import org.springframework.core.convert.converter.Converter;
 
 public class StringToEnumConverter implements Converter<String, DiffSide> {
