@@ -3,6 +3,7 @@ package com.diff.service;
 import com.diff.data.Diff;
 import com.diff.data.DiffOffset;
 import com.diff.data.mapper.GitEditToDiffMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.eclipse.jgit.diff.*;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,10 @@ public class GitDiffComparator implements DiffComparator {
 
     @Override
     public List<Diff> compare(String left, String right) {
-        RawText leftRawText = new RawText(left.getBytes(StandardCharsets.UTF_8));
-        RawText rightRawText = new RawText(right.getBytes(StandardCharsets.UTF_8));
+        String cleanedLeft = StringUtils.trimToEmpty(left);
+        String cleanedRight = StringUtils.trimToEmpty(right);
+        RawText leftRawText = new RawText(cleanedLeft.getBytes(StandardCharsets.UTF_8));
+        RawText rightRawText = new RawText(cleanedRight.getBytes(StandardCharsets.UTF_8));
         EditList edits = new EditList();
         edits.addAll(MyersDiff.INSTANCE.diff(RawTextComparator.DEFAULT, leftRawText, rightRawText));
         List<Diff> diffs = edits.stream().map(gitEditToDiffMapper).collect(Collectors.toList());

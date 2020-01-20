@@ -19,11 +19,10 @@ public class DiffDataServiceImpl implements DiffDataService {
     public DiffEntry save(String id, DiffSide side, String data) {
         DiffEntry diffEntry = getEntry(id);
         diffEntry.setId(id);
-        String cleanedData = StringUtils.trimToEmpty(data);
         if(side.equals(DiffSide.LEFT)){
-            diffEntry.setLeftData(cleanedData);
+            diffEntry.setLeftData(data);
         }else if(side.equals(DiffSide.RIGHT)){
-            diffEntry.setRightData(cleanedData);
+            diffEntry.setRightData(data);
         }
         return diffEntryRepository.save(diffEntry);
     }
