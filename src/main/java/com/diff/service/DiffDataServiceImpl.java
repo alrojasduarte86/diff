@@ -19,8 +19,12 @@ public class DiffDataServiceImpl implements DiffDataService {
     /**
      * Used to get access to the diff entry entities
      */
-    @Autowired
     private DiffEntryRepository diffEntryRepository;
+
+    @Autowired
+    public DiffDataServiceImpl(DiffEntryRepository diffEntryRepository){
+        this.diffEntryRepository = diffEntryRepository;
+    }
 
     /**
      * Saves a given piece of data as part of a diff entry.
