@@ -1,24 +1,28 @@
 package com.diff.service;
 
 import com.diff.data.Diff;
-import com.diff.data.DiffOffset;
-import com.diff.data.mapper.GitEditToDiffMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.eclipse.jgit.diff.*;
-import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Column;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+/**
+ * Implementation of a diff comparator.
+ * This implementation compares two pieces of data
+ * by using the JGit library which implements standard
+ * algorithms for text comparison
+ */
 @Component
 public class GitDiffComparator implements DiffComparator {
 
+    /**
+     * Used to map a JGit Edit object to a Diff object
+     */
     private Function<Edit, Diff> gitEditToDiffMapper;
 
     @Autowired
@@ -26,6 +30,13 @@ public class GitDiffComparator implements DiffComparator {
         this.gitEditToDiffMapper=gitEditToDiffMapper;
     }
 
+    /**
+     * Compares two pieces of data by using JGit library and its implementation
+     * of the Myers diff algorithm
+     * @param left The left piece of data to be compared
+     * @param right The right piece of data to be compared
+     * @return The list of differences between the two pieces of data
+     */
     @Override
     public List<Diff> compare(String left, String right) {
         String cleanedLeft = StringUtils.trimToEmpty(left);

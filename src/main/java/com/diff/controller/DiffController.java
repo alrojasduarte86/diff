@@ -10,6 +10,9 @@ import com.diff.data.DiffEntry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * HTTP Controller of the application
+ */
 @RestController
 public class DiffController {
 
@@ -22,6 +25,13 @@ public class DiffController {
     @Autowired
     private DiffComparatorService diffComparatorService;
 
+    /**
+     * Used to process the upload of the data to be compared
+     * @param id The id of the data
+     * @param side The side of the data (left|right)
+     * @param encodedData The base 64 representation of the data
+     * @return
+     */
     @PutMapping("/v1/diff/{id}/{side}")
     public DiffEntry put(@PathVariable String id, @PathVariable DiffSide side, @RequestBody String encodedData){
         String decodedData = bodyConverter.convert(encodedData);
@@ -29,8 +39,14 @@ public class DiffController {
         return diffEnty;
     }
 
+
+    /**
+     * Compares the left and right versions of a given piece of data
+     * @param id The id of the data to be compared
+     * @return The result of the comparison
+     */
     @GetMapping("/v1/diff/{id}")
-    public DiffComparisonResult put(@PathVariable String id){
+    public DiffComparisonResult compare(@PathVariable String id){
         return diffComparatorService.compare(id);
     }
 
