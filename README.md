@@ -36,6 +36,45 @@ Sample Response<br/>
 
 * GET /v1/diff/{id}/: Is used to get the diffs between the left and right pieces of data that have {id} as their id
 
+Sample Request<br/>
+
+```
+curl -X GET http://localhost:8080/v1/diff/12345/
+```
+
+Sample Response<br/>
+```json
+{
+    "result": "NOT_EQUAL_SIZE",
+    "diffs": [
+        {
+            "leftOffset": {
+                "start": 1,
+                "end": 2,
+                "length": 1
+            },
+            "rightOffset": {
+                "start": 1,
+                "end": 2,
+                "length": 1
+            }
+        },
+        {
+            "leftOffset": {
+                "start": 3,
+                "end": 4,
+                "length": 1
+            },
+            "rightOffset": {
+                "start": 3,
+                "end": 4,
+                "length": 1
+            }
+        }
+    ]
+}
+```
+
 ## Requirements
 
 - Make sure the PC you will be running the application on has the JDK 1.8 installed
