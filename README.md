@@ -17,7 +17,7 @@ curl -X PUT -H "Content-Type: application/json" -d 'W3siaWQiOiI2Nzg5MCJ9LAp7Imlk
     "leftData": "[{\"id\":\"67890\"},\n{\"id\":\"12345\"},\n{\"id\":\"1111\"},\n{\"id\":\"2222\"}]"
 }
 ```
-In this case ```lefData``` attribute of the response holds the decoded version of the body that was sent as part of the response
+In this case ```lefData``` attribute of the response holds the decoded version of the body that was sent as part of the request
 
 * PUT /v1/diff/{id}/right:  Is used to set the right piece of data to be compared. The body of the request should be a JSON Base64 encoded text.<br/>
 
@@ -34,7 +34,7 @@ curl -X PUT -H "Content-Type: application/json" -d 'W3siaWQiOiI2Nzg5MCJ9LAp7Imlk
     "rightData": "[{\"id\":\"67890\"},\n{\"id\":\"12345\"},\n{\"id\":\"1111\"},\n{\"id\":\"2222\"}]"
 }
 ```
-In this case ```rightData``` attribute of the response holds the decoded version of the body that was sent as part of the response
+In this case ```rightData``` attribute of the response holds the decoded version of the body that was sent as part of the request
 
 * GET /v1/diff/{id}/: Is used to get the diffs between the left and right pieces of data that have {id} as their id
 
