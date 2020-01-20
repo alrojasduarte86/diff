@@ -5,13 +5,18 @@ This application exposes three endpoints:
 * PUT /v1/diff/{id}/left: Is used to set the left piece of data to be compared. The body of the request should be a JSON Base64 code text.<br/>
 
 Sample Request<br/>
-```curl -X PUT -H "Content-Type: application/json" -d 'W3siaWQiOiI2Nzg5MCJ9LAp7ImlkIjoiMTIzNDUifSwKeyJpZCI6IjExMTEifSwKeyJpZCI6IjIyMjIifV0=' http://localhost:8080/v1/diff/{id}/left```
 
-Sample Response
-```{```
-```    "id": "12345",```
-```    "leftData": "[{\"id\":\"67890\"},\n{\"id\":\"12345\"},\n{\"id\":\"1111\"},\n{\"id\":\"2222\"}]"```
-```}```
+```
+curl -X PUT -H "Content-Type: application/json" -d 'W3siaWQiOiI2Nzg5MCJ9LAp7ImlkIjoiMTIzNDUifSwKeyJpZCI6IjExMTEifSwKeyJpZCI6IjIyMjIifV0=' http://localhost:8080/v1/diff/{id}/left
+```
+
+Sample Response<br/>
+```json
+{
+    "id": "12345",
+    "leftData": "[{\"id\":\"67890\"},\n{\"id\":\"12345\"},\n{\"id\":\"1111\"},\n{\"id\":\"2222\"}]"
+}
+```
 
 * PUT /v1/diff/{id}/right:  Is used to set the right piece of data to be compared. The body of the request should be a JSON Base64 code text.
 * GET /v1/diff/{id}/: Is used to get the diffs between the left and right pieces of data that have {id} as their id
