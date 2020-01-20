@@ -7,7 +7,7 @@ This application exposes three endpoints:
 Sample Request<br/>
 
 ```
-curl -X PUT -H "Content-Type: application/json" -d 'W3siaWQiOiI2Nzg5MCJ9LAp7ImlkIjoiMTIzNDUifSwKeyJpZCI6IjExMTEifSwKeyJpZCI6IjIyMjIifV0=' http://localhost:8080/v1/diff/{id}/left
+curl -X PUT -H "Content-Type: application/json" -d 'W3siaWQiOiI2Nzg5MCJ9LAp7ImlkIjoiMTIzNDUifSwKeyJpZCI6IjExMTEifSwKeyJpZCI6IjIyMjIifV0=' http://localhost:8080/v1/diff/12345/left
 ```
 
 Sample Response<br/>
@@ -18,7 +18,22 @@ Sample Response<br/>
 }
 ```
 
-* PUT /v1/diff/{id}/right:  Is used to set the right piece of data to be compared. The body of the request should be a JSON Base64 code text.
+* PUT /v1/diff/{id}/right:  Is used to set the right piece of data to be compared. The body of the request should be a JSON Base64 code text.<br/>
+
+Sample Request<br/>
+
+```
+curl -X PUT -H "Content-Type: application/json" -d 'W3siaWQiOiI2Nzg5MCJ9LAp7ImlkIjoiMTIzNDUifSwKeyJpZCI6IjExMTEifSwKeyJpZCI6IjIyMjIifV0=' http://localhost:8080/v1/diff/12345/right
+```
+
+Sample Response<br/>
+```json
+{
+    "id": "12345",
+    "rightData": "[{\"id\":\"67890\"},\n{\"id\":\"12345\"},\n{\"id\":\"1111\"},\n{\"id\":\"2222\"}]"
+}
+```
+
 * GET /v1/diff/{id}/: Is used to get the diffs between the left and right pieces of data that have {id} as their id
 
 ## Requirements
