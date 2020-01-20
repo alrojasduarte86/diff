@@ -3,10 +3,7 @@ package com.diff.service;
 import com.diff.data.Diff;
 import com.diff.data.DiffOffset;
 import com.diff.data.mapper.GitEditToDiffMapper;
-import org.eclipse.jgit.diff.EditList;
-import org.eclipse.jgit.diff.MyersDiff;
-import org.eclipse.jgit.diff.RawText;
-import org.eclipse.jgit.diff.RawTextComparator;
+import org.eclipse.jgit.diff.*;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,15 +12,16 @@ import javax.persistence.Column;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Component
 public class GitDiffComparator implements DiffComparator {
 
-    private GitEditToDiffMapper gitEditToDiffMapper;
+    private Function<Edit, Diff> gitEditToDiffMapper;
 
     @Autowired
-    public GitDiffComparator(GitEditToDiffMapper gitEditToDiffMapper){
+    public GitDiffComparator(Function<Edit, Diff> gitEditToDiffMapper){
         this.gitEditToDiffMapper=gitEditToDiffMapper;
     }
 
